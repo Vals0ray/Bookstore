@@ -1,8 +1,58 @@
-﻿@{
+﻿@model IEnumerable<Bookstore.Web.Models.BookViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .headText{
+        text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        color: whitesmoke;
+    }
+</style>
+
+<div class="card-header"  style="background-image: url(/img/background.jpg);">
+    <div class="text-center">
+        <h2 class="display-4"><b class="headText">Welcome to bookstore</b></h2>
+        <h3 class="headText">We make buying books easy and affordable.</h3>
+    </div>
+</div>
+
+<div class="card-body">
+    <br />
+    <hr />
+    <h4><b>The latest added books</b></h4>
+    <br />
+
+    <div class="row">
+
+        @foreach (var book in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <h3 class="card-header">@book.Title</h3>
+
+                    <img src="~/img/book-default.jpg" height="270" alt="book image"/>
+                    <div class="card-body">
+
+                        <h5 class="card-title">Special title treatment</h5>
+                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+    <h4><b>The most popular books</b></h4>
+    <br />
+
+    <hr />
+    <h4><b>Browse by subject</b></h4>
+    <br />
+
+
 </div>
