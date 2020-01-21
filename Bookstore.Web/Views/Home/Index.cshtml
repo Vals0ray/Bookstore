@@ -1,21 +1,29 @@
 ﻿@model IEnumerable<Bookstore.Web.Models.BookViewModel>
+@using Bookstore.Web.Models.StaticData;
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <style>
-    .headText{
+    .headText {
         text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
         color: whitesmoke;
     }
 </style>
 
-<div class="card-header"  style="background-image: url(/img/background.jpg);">
+<div class="card-header" style="background-image: url(/img/background.jpg);">
     <div class="text-center">
         <h2 class="display-4"><b class="headText">Welcome to bookstore</b></h2>
         <h3 class="headText">We make buying books easy and affordable.</h3>
     </div>
+
+    <br />
+
+    <form class="form-inline my-2 my-lg-0 justify-content-center">
+        <input class="form-control col-md-4" type="text" placeholder="Search by book title">
+        <button class="btn btn-secondary" type="submit">Search</button>
+    </form>
 </div>
 
 <div class="card-body">
@@ -32,7 +40,7 @@
                 <div class="card mb-3">
                     <h3 class="card-header">@book.Title</h3>
 
-                    <img src="~/img/book-default.jpg" height="270" alt="book image"/>
+                    <img src="~/img/book-default.jpg" height="270" alt="book image" />
                     <div class="card-body">
 
                         <h5 class="card-title">Special title treatment</h5>
@@ -47,12 +55,48 @@
     </div>
 
     <hr />
-    <h4><b>The most popular books</b></h4>
+    <h4><b>Bestselling books</b></h4>
     <br />
+
+    <div class="row">
+
+        @foreach (var book in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <h3 class="card-header">@book.Title</h3>
+
+                    <img src="~/img/book-default.jpg" height="270" alt="book image" />
+                    <div class="card-body">
+
+                        <h5 class="card-title">Special title treatment</h5>
+                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 
     <hr />
     <h4><b>Browse by subject</b></h4>
     <br />
 
+    <div class="row justify-content-center">
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="list-group col-md-3">
+                @foreach (var category in Category.Categories.Skip(i * Category.Categories.Count / 3).Take(Category.Categories.Count / 3))
+                {
+                    <a href="#" class="list-group-item list-group-item-action">
+                        @category
+                    </a>
+                }
+            </div>
+        }
+    </div>
 
+    <hr />
 </div>
