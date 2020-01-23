@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<script>
+    function ButtonClick(id) {
+        location.href = '/Order/Remove/' + id;
+    }
+</script>
+
+<div class="card-body">
+    <div>
+        <h1>Shopping Cart</h1>
+        <h5>Cart total: @Bookstore.Web.Models.StaticData.Cart.Sum</h5><button type="button" class="btn btn-primary btn-sm">Proceed to Checkout</button>
+        <hr />
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Bookstore.Web.Models.StaticData.Cart.BooksInCart)
+            {
+                <tr>
+                    <td class="row" style="border:none">
+                        <div class="col-md-2">
+                            <img src="~/img/book-default.jpg" width="75" height="100" alt="book image" />
+                        </div>
+                        <div class="col-md-10">
+                            @book.Title
+                            <br />
+                            @book.Authors.First().FirstName @book.Authors.First().SecondName
+                        </div>
+                    </td>
+                    <td style="border:none">1</td>
+                    <td style="border:none">£@book.Price</td>
+                    <td style="border:none">
+                        <button type="button" class="btn btn-danger" onclick="ButtonClick(@book.Id)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

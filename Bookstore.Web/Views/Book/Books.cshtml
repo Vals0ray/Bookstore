@@ -4,6 +4,12 @@
     ViewData["Title"] = "Books";
 }
 
+<script>
+    function ButtonClick(id) {
+        location.href = '/Order/Cart/' + id;
+    }
+</script>
+
 <div class="card-body">
     <div>
         <h1>@Model.Title</h1>
@@ -28,7 +34,7 @@
                     <h4 class="card-title">
                         <span class="text-success">Price: £@Model.Price</span>
                     </h4>
-                    <button type="button" class="btn btn-success">Add to cart</button>
+                    <button type="button" class="btn btn-success" onclick="ButtonClick(@Model.Id)">Add to cart</button>
                 </div>
             </div>
         </div>

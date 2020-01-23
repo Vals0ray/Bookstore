@@ -5,22 +5,22 @@
         min-width: 200px;
     }
 
-        .dropdown-menu.columns-2 {
-            min-width: 400px;
-        }
+    .dropdown-menu.columns-2 {
+        min-width: 400px;
+    }
 
-        .dropdown-menu.columns-3 {
-            min-width: 600px;
-        }
+    .dropdown-menu.columns-3 {
+        min-width: 600px;
+    }
 
-        .dropdown-menu.columns-4 {
-            min-width: 800px;
-        }
+    .dropdown-menu.columns-4 {
+        min-width: 800px;
+    }
 
-        .dropdown-menu li a {
-            padding: 5px 10px;
-            font-weight: 300;
-        }
+    .dropdown-menu li a {
+        padding: 5px 10px;
+        font-weight: 300;
+    }
 
     .multi-column-dropdown {
         list-style: none;
@@ -28,19 +28,19 @@
         padding: 0px;
     }
 
-        .multi-column-dropdown li a {
-            display: block;
-            clear: both;
-            line-height: 1.428571429;
-            color: #333;
-            white-space: normal;
-        }
+    .multi-column-dropdown li a {
+        display: block;
+        clear: both;
+        line-height: 1.428571429;
+        color: #333;
+        white-space: normal;
+    }
 
-            .multi-column-dropdown li a:hover {
-                text-decoration: none;
-                color: #262626;
-                background-color: #999;
-            }
+    .multi-column-dropdown li a:hover {
+        text-decoration: none;
+        color: #262626;
+        background-color: #999;
+    }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,10 +51,10 @@
 
         <ul class="navbar-nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/Order/Cart">
                     <h4>
                         <img src="~/img/basket_icon.png" width="20" height="20" style="padding-right:5px;" />
-                        <b>Cart: £0.00</b>
+                        <b>Cart: £@Bookstore.Web.Models.StaticData.Cart.Sum</b>
                     </h4>
                 </a>
             </li>
