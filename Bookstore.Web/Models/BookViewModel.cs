@@ -6,6 +6,8 @@ namespace Bookstore.Web.Models
 {
     public class BookViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(128)]
         public string Title { get; set; }
@@ -26,6 +28,8 @@ namespace Bookstore.Web.Models
         [MaxLength(1024)]
         public string Description { get; set; }
 
+        public BookDetailViewModel Details { get; set; }
+
         public List<BookAuthorViewModel> Authors { get; set; }
     }
 
@@ -38,5 +42,39 @@ namespace Bookstore.Web.Models
         [Required]
         [MaxLength(64)]
         public string SecondName { get; set; }
+    }
+
+    public class BookDetailViewModel
+    {
+        [Required]
+        [MaxLength(64)]
+        public string Binding { get; set; }
+
+        [Required]
+        [MaxLength(128)]
+        public string Publisher { get; set; }
+
+        [Required]
+        public short NumberOfPages { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Weight { get; set; }
+
+        [Required]
+        [MaxLength(32)]
+        public string Language { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Wide { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Long { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Tall { get; set; }
     }
 }

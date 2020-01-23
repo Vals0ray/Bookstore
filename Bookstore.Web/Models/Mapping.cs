@@ -10,6 +10,9 @@ namespace Bookstore.Web.Models
             CreateMap<BookViewModel, BookDTO>();
             CreateMap<BookDTO, BookViewModel>();
 
+            CreateMap<BookDetailViewModel, BookDetailDTO>();
+            CreateMap<BookDetailDTO, BookDetailViewModel>();
+
             CreateMap<BookAuthorViewModel, BookAuthorDTO>();
             CreateMap<BookAuthorDTO, BookAuthorViewModel>();
         }

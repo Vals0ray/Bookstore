@@ -11,6 +11,9 @@ namespace Bookstore.BLL.Infrastructure
             CreateMap<Book, BookDTO>();
             CreateMap<BookDTO, Book>();
 
+            CreateMap<BookDetail, BookDetailDTO>();
+            CreateMap<BookDetailDTO, BookDetail>();
+
             CreateMap<BookAuthor, BookAuthorDTO>();
             CreateMap<BookAuthorDTO, BookAuthor>();
         }

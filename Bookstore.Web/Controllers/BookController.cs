@@ -20,17 +20,25 @@ namespace Bookstore.Web.Controllers
 
         public IActionResult BooksList(string category, int page = 1)
         {
-            var AllBooks = books.GetWithInclude(b => b.Category == category, b => b.Authors);
+            var allBooks = books.GetWithInclude(b => b.Category == category, b => b.Authors);
 
-            var BooksOnPage = AllBooks.Skip((page - 1) * 10)
+            var booksOnPage = allBooks.Skip((page - 1) * 10)
                                       .Take(10)
                                       .ToList();
 
-            var model = mapper.Map<List<BookViewModel>>(BooksOnPage);
+            var model = mapper.Map<List<BookViewModel>>(booksOnPage);
 
             ViewBag.Category = category;
             ViewBag.CurrentPage = page;
-            ViewBag.BooksCount = AllBooks.Count();
+            ViewBag.BooksCount = allBooks.Count();
+
+            return View(model);
+        }
+
+        public IActionResult Books(int id)
+        {
+            var book = books.GetWithInclude(b => b.Id == id, b => b.Authors, b => b.Details).First();
+            var model = mapper.Map<BookViewModel>(book);
 
             return View(model);
         }

@@ -33,23 +33,15 @@
     <br />
 
     <div class="row">
-
         @foreach (var book in Model)
         {
             <div class="col-md-3">
-                <div class="card mb-3">
-                    <h3 class="card-header">@book.Title</h3>
-
-                    <img src="~/img/book-default.jpg" height="270" alt="book image" />
-                    <div class="card-body">
-
-                        <h5 class="card-title">Special title treatment</h5>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <a href="/Book/Books/@book.Id">
+                    <div class="card mb-3">
+                        <img src="~/img/book-default.jpg" height="270" alt="book image" />
+                        <h4 class="card-header">@book.Title</h4>
                     </div>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
-                </div>
+                </a>
             </div>
         }
     </div>
@@ -59,23 +51,15 @@
     <br />
 
     <div class="row">
-
         @foreach (var book in Model)
         {
             <div class="col-md-3">
-                <div class="card mb-3">
-                    <h3 class="card-header">@book.Title</h3>
-
-                    <img src="~/img/book-default.jpg" height="270" alt="book image" />
-                    <div class="card-body">
-
-                        <h5 class="card-title">Special title treatment</h5>
-                        <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <a href="/Book/Books/@book.Id">
+                    <div class="card mb-3">
+                        <img src="~/img/book-default.jpg" height="270" alt="book image" />
+                        <h4 class="card-header">@book.Title</h4>
                     </div>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
-                </div>
+                </a>
             </div>
         }
     </div>

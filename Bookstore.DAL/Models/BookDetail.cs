@@ -25,7 +25,17 @@ namespace Bookstore.DAL.Models
         [MaxLength(32)]
         public string Language { get; set; }
 
-        public BookDimension Dimensions { get; set; }
+        [Required]
+        [MaxLength(8)]
+        public float Wide { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Long { get; set; }
+
+        [Required]
+        [MaxLength(8)]
+        public float Tall { get; set; }
 
         public int BookId { get; set; }
         public Book Book { get; set; }

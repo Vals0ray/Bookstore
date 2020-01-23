@@ -11,8 +11,6 @@ namespace Bookstore.DAL.DataAccess
 
         public DbSet<BookDetail> BookDetails { get; set; }
 
-        public DbSet<BookDimension> BookDimensions { get; set; }
-
         public DataContext() { }
 
         public DataContext(DbContextOptions<DataContext> options)

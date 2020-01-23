@@ -1,0 +1,90 @@
+﻿@model Bookstore.Web.Models.BookViewModel
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<div class="card-body">
+    <div>
+        <h1>@Model.Title</h1>
+        <br />
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/img/book-default.jpg" width="150" height="200" alt="book image" />
+        </div>
+        <div class="col-md-7">
+            Authors: @Model.Authors.First().FirstName @Model.Authors.First().SecondName
+            <br />
+            Price: £@Model.Price
+            <br />
+            Edition: @Model.Edition
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                <div class="card-header">Buy book</div>
+                <div class="card-body bg-light">
+                    <h4 class="card-title">
+                        <span class="text-success">Price: £@Model.Price</span>
+                    </h4>
+                    <button type="button" class="btn btn-success">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <br />
+        <h3>Description</h3>
+
+        @if (@Model.Description != null)
+        {
+            <p>@Model.Description</p>
+        }
+        else
+        {
+            <p>No description</p>
+        }
+
+        <br />
+
+        <h3>Product details</h3>
+        @if (@Model.Details != null)
+        {
+            <p>
+                <div>
+                    <b>Binding:</b>
+                    @Model.Details.Binding
+                </div>
+                <div>
+                    <b>Publisher:</b>
+                    @Model.Details.Publisher
+                </div>
+                <div>
+                    <b>Number of pages:</b>
+                    @Model.Details.NumberOfPages
+                </div>
+                <div>
+                    <b>Dimensions:</b>
+                    @Model.Details.Wide" wide x
+                    @Model.Details.Long" long x
+                    @Model.Details.Tall" tall
+                </div>
+                <div>
+                    <b>Weight:</b>
+                    @Model.Details.Weight lbs.
+                </div>
+                <div>
+                    <b>Language:</b>
+                    @Model.Details.Language
+                </div>
+            </p>
+        }
+        else
+        {
+            <p>No details</p>
+        }
+
+    </div>
+</div>

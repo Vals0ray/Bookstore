@@ -6,6 +6,8 @@ namespace Bookstore.BLL.DTO
 {
     public class BookDTO
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(128)]
         public string Title { get; set; }
@@ -63,11 +65,6 @@ namespace Bookstore.BLL.DTO
         [MaxLength(32)]
         public string Language { get; set; }
 
-        public BookDimensionDTO Dimensions { get; set; }
-    }
-
-    public class BookDimensionDTO
-    {
         [Required]
         [MaxLength(8)]
         public float Wide { get; set; }
