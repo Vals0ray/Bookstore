@@ -1,6 +1,7 @@
 ﻿using Bookstore.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace Bookstore.DAL.Interfaces
 {
@@ -12,5 +13,8 @@ namespace Bookstore.DAL.Interfaces
         IEnumerable<Book> Get(Func<Book, bool> predicate);
         void Remove(Book item);
         void Update(Book item);
+        IEnumerable<Book> GetWithInclude(params Expression<Func<Book, object>>[] includeProperties);
+        IEnumerable<Book> GetWithInclude(Func<Book, bool> predicate, 
+            params Expression<Func<Book, object>>[] includeProperties);
     }
 }

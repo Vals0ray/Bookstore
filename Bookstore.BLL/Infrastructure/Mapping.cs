@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Bookstore.BLL.DTO;
 using Bookstore.DAL.Models;
-using System;
 
-namespace Bookstore.BLL.DTO
+namespace Bookstore.BLL.Infrastructure
 {
     public class Mapping : Profile
     {
@@ -11,8 +11,8 @@ namespace Bookstore.BLL.DTO
             CreateMap<Book, BookDTO>();
             CreateMap<BookDTO, Book>();
 
-            CreateMap<Func<BookDTO, bool>, Func<Book, bool>>();
-            CreateMap<Func<Book, bool>, Func<BookDTO, bool>>();
+            CreateMap<BookAuthor, BookAuthorDTO>();
+            CreateMap<BookAuthorDTO, BookAuthor>();
         }
     }
 }

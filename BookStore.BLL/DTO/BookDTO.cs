@@ -26,8 +26,6 @@ namespace Bookstore.BLL.DTO
         [MaxLength(1024)]
         public string Description { get; set; }
 
-        public string Author { get; set; }
-
         public List<BookAuthorDTO> Authors { get; set; }
 
         public BookDetailDTO Details { get; set; }

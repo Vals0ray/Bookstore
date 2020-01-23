@@ -2,58 +2,83 @@
 
 @{
     ViewData["Title"] = "BooksList";
+    int currentPage = ViewBag.CurrentPage;
+    int pages = ViewBag.BooksCount / 10 + 1;
+    int nextPage = currentPage + 1;
+    int prevPage = currentPage - 1;
+    int BooksOnPageFrom = (currentPage - 1) * 10 + 1;
+    int BooksOnPageTo = (currentPage - 1) * 10 + Model.Count();
+
+    string LeftItemClass = currentPage == 1 ? "page-item disabled" : "page-item";
+    string RightItemClass = currentPage == pages ? "page-item disabled" : "page-item";
 }
 
-<h1>BooksList</h1>
+<div class="card-header">
+    <h1>@ViewBag.Category</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Edition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Edition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-3">
+            Showing @BooksOnPageFrom - @BooksOnPageTo of @ViewBag.BooksCount results.
+        </div>
+        <div class="col-md-2 offset-md-7">
+            <ul class="pagination pagination-sm">
+                <li class="@LeftItemClass">
+                    <a class="page-link" href="/Book/BooksList?category=@ViewBag.Category&page=@prevPage">&laquo;</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">
+                        Page @currentPage of @pages
+                    </a>
+                </li>
+                <li class="@RightItemClass">
+                    <a class="page-link" href="/Book/BooksList?category=@ViewBag.Category&page=@nextPage">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    @foreach (var book in Model)
+    {
+        <div class="row justify-content-center">
+            <div class="col-md-1">
+                <a href="#">
+                    <img src="~/img/book-default.jpg" width="75" height="100" alt="book image" />
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="#">
+                    @book.Title
+                </a>
+                <p>
+                    by @book.Authors.First().FirstName @book.Authors.First().SecondName
+                    <br />
+                    Edition: @book.Edition
+                </p>
+            </div>
+            <div class="col-md-2 offset-md-5">
+                <p>Price:  <span class="text-success">£@book.Price</span></p>
+            </div>
+        </div>
+        <hr />
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <ul class="pagination">
+                <li class="@LeftItemClass">
+                    <a class="page-link" href="/Book/BooksList?category=@ViewBag.Category&page=@prevPage">&laquo;</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">
+                        Page @currentPage of @pages
+                    </a>
+                </li>
+                <li class="@RightItemClass">
+                    <a class="page-link" href="/Book/BooksList?category=@ViewBag.Category&page=@nextPage">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

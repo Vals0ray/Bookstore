@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
+using Bookstore.BLL.Infrastructure;
 
 namespace Bookstore.Web
 {
@@ -34,7 +35,7 @@ namespace Bookstore.Web
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfiles(new List<Profile>() { new BLL.DTO.Mapping(), new Models.Mapping() });
+                mc.AddProfiles(new List<Profile>() { new Mapping(), new Models.Mapping() });
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

@@ -9,6 +9,9 @@ namespace Bookstore.Web.Models
         {
             CreateMap<BookViewModel, BookDTO>();
             CreateMap<BookDTO, BookViewModel>();
+
+            CreateMap<BookAuthorViewModel, BookAuthorDTO>();
+            CreateMap<BookAuthorDTO, BookAuthorViewModel>();
         }
     }
 }
